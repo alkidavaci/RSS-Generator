@@ -32,15 +32,18 @@ function generatePassword(passwordLength, inputIncludesNumbers, inputIncludesLow
   //Added Alerts so the input is number,more than 8 and less than 128 characters
   var passwordLength = parseInt(inputLength);
 
+
   if (isNaN(passwordLength)) {
     window.alert("Enter only number!");
-    return;
+    return "Your Secure Password"
   } else if (passwordLength < 8) {
     window.alert("Password is to short! Must be more than 8 and less than 128 characters!");
+    return "Your Secure Password"
   } else if (passwordLength > 128) {
     window.alert("Password is to long! Must be more than 8 less and than 128 characters!");
+    return "Your Secure Password"
   } else {
-    window.alert("This is a valid number");
+    window.alert("This is a valid number")
   }
 
   //Input for the type of characters included
@@ -50,10 +53,14 @@ function generatePassword(passwordLength, inputIncludesNumbers, inputIncludesLow
   var inputIncludesSpecialCharacter = window.confirm("Would you like to include SpecialCharacter to your password?")
 
   // Condition for password validation
-  if (!(inputIncludesNumbers || inputIncludesLowercase || inputIncludesUppercase || inputIncludesSpecialCharacter)) {
-    window.alert("At least one character type should be selected");
-    return;
+  // function of validation
+  function passwordValidation() {
+    if (!(inputIncludesNumbers || inputIncludesLowercase || inputIncludesUppercase || inputIncludesSpecialCharacter)) {
+      window.alert("At least one character type should be selected");
+      return "Your Secure Password";
+    }
   }
+  passwordValidation()
 
   // Put random first characters of password in order Number, Lowercase, Uppercase and Special Characters in an empty array
   const starter = []
